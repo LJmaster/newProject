@@ -1,0 +1,47 @@
+//
+//  PrefixHeader.pch
+//  Horoscope
+//
+//  Created by 刘杰 on 2019/1/11.
+//  Copyright © 2019 makerLJ. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//宏，
+#import "UtilsMacros.h"
+#import "FontAndColorMacros.h"
+#import "URLMacros.h"
+
+//category
+#import "UIImage+Himage.h"
+#import "UIColor+HColor.h"
+
+
+//用户信息
+#import "HUser.h"
+#import "HUserManager.h"
+#import "HSelectHoroscopeViewModel.h"
+
+//基础组建
+#import "HDynmaicBigNavView.h"
+#import "HNormalNavView.h"
+#import "UIView+size.h"
+#import "BaseView.h"
+#import "HNameNavView.h"
+
+//埋点统计上传数据
+#import "AnalysisDataManager.h"
+
+// 三方
+#import "MBProgressHUD+MJ.h"
+#import "PPNetworkHelper.h"
+#import "MJRefresh.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "SGPagingView.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */

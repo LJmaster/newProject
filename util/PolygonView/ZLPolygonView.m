@@ -1,0 +1,256 @@
+//
+//  ZLPolygonView.m
+//  ZLPolygonViewDemo
+//
+//  Created by zhaoliang chen on 2018/11/7.
+//  Copyright © 2018 yungj. All rights reserved.
+//
+
+#import "ZLPolygonView.h"
+
+#define kCosValue(Angle) cos(M_PI / 180 * (Angle))
+#define kSinValue(Angle) sin(M_PI / 180 * (Angle))
+
+@interface ZLPolygonView()
+
+@property(nonatomic,strong)NSMutableArray* arrayOuterPoints;
+@property(nonatomic,strong)NSMutableArray* arrayInnerPoints;
+@property(nonatomic,strong)NSMutableArray* arrayTextPoint;
+
+@property(nonatomic,assign)CGFloat labelSize;
+
+@end
+
+@implementation ZLPolygonView
+
+
+- (instancetype)init {
+    if (self == [super init]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self == [super initWithFrame:frame]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (instancetype)initWithLabels:(NSArray<NSString*>*) labels {
+    return [self initWithLabels:labels polygons:[NSMutableArray new]];
+}
+
+- (instancetype)initWithLabels:(NSArray<NSString*>*)labels polygons:(NSArray<NSNumber*>*)polygons {
+    if (self == [self init]) {
+        self.arrayLabels = labels;
+        self.arrayPolygons = polygons;
+    }
+    return self;
+}
+
+- (void)initialize {
+    self.backgroundColor = [UIColor clearColor];
+    self.arrayOuterPoints = [NSMutableArray new];
+    self.arrayInnerPoints = [NSMutableArray new];
+    self.arrayTextPoint = [NSMutableArray new];
+    self.innerColor = [UIColor orangeColor];
+    self.lineColor = [UIColor grayColor];
+    self.dividerNumber = 4;
+    self.lineColor = [UIColor grayColor];
+    self.lineWidth = 1.f;
+    self.innerColor = [UIColor orangeColor];
+    self.labelSize = 20.f;
+}
+
+- (void)setLineColor:(UIColor *)lineColor {
+    _lineColor = lineColor;
+    [self setNeedsDisplay];
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth {
+    _lineWidth = lineWidth;
+    [self setNeedsDisplay];
+}
+
+- (void)setInnerColor:(UIColor *)innerColor {
+    _innerColor = innerColor;
+    [self setNeedsDisplay];
+}
+
+- (void)setDividerNumber:(NSInteger)dividerNumber {
+    _dividerNumber = dividerNumber;
+    [self setNeedsDisplay];
+}
+
+- (void)setArrayPolygons:(NSArray *)arrayPolygons {
+    _arrayPolygons = arrayPolygons;
+    [self setNeedsDisplay];
+}
+
+- (void)setArrayLabels:(NSArray *)arrayLabels {
+    _arrayLabels = arrayLabels;
+    [self setNeedsDisplay];
+}
+
+- (void)setJsonValue:(NSString*)jsonStr {
+    NSArray* array = [self arrayWithJsonString:jsonStr];
+    if (array.count >= 3) {
+        NSMutableArray* texts = [NSMutableArray new];
+        NSMutableArray* values = [NSMutableArray new];
+        for (NSDictionary* dic in array) {
+            [texts addObject:dic[@"text"]];
+            [values addObject:dic[@"value"]];
+        }
+        self.arrayLabels = texts;
+        self.arrayPolygons = values;
+    }
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    [self.arrayOuterPoints removeAllObjects];
+    [self.arrayInnerPoints removeAllObjects];
+    [self.arrayTextPoint removeAllObjects];
+    
+    
+    //    创建绘图的画板
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    //    画板的背景颜色
+    CGContextSetFillColorWithColor(context, self.backgroundColor.CGColor);
+    //    渲染
+    CGContextFillRect(context, rect);
+    
+    UIGraphicsPushContext(context);
+    
+    CGFloat innerAngle = 360.f / self.arrayPolygons.count;
+    CGFloat radius = MIN(rect.size.width/2, rect.size.height/2) - self.labelSize;
+    CGPoint centerPoint = CGPointMake(rect.size.width/2, rect.size.height/2);
+    
+    [[UIColor orangeColor] setStroke];
+    //画内圈
+    for (int i=0; i<self.arrayPolygons.count; i++) {
+        CGFloat current = [self.arrayPolygons[i] floatValue];
+        if (current > 1) {
+            current = 1;
+        }
+        CGPoint inPoint = CGPointMake(centerPoint.x - (kCosValue(90 - innerAngle * i) * (radius*current)),centerPoint.y - (kSinValue(90 - innerAngle * i) * radius*current));
+        [self.arrayInnerPoints addObject:[NSValue valueWithCGPoint:inPoint]];
+        // 画线
+        
+        if (i==0) {
+            CGContextMoveToPoint(context, inPoint.x, inPoint.y);
+        } else {
+            CGContextAddLineToPoint(context, inPoint.x, inPoint.y);
+        }
+        //   圆点
+                UIView * dview = [[UIView alloc] initWithFrame:CGRectMake(inPoint.x - 2.5, inPoint.y - 2.5, 5, 5)];
+                dview.layer.masksToBounds = YES;
+                dview.layer.cornerRadius = 2.5;
+                dview.backgroundColor = [UIColor greenColor];
+                [self addSubview:dview];
+        
+        
+        
+    }
+    
+    // 修饰
+    CGContextSetLineJoin(context, kCGLineJoinRound); // 转角圆角
+    
+    //    闭合路径
+    CGContextClosePath(context);
+    ////    设置填充颜色
+    //    CGContextSetFillColorWithColor(context, self.innerColor.CGColor);
+    ////    填充渲染
+    //    CGContextFillPath(context);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+    CGContextStrokePath(context);
+    
+    
+    //画外圈
+    //    设置描边颜色
+    CGContextSetStrokeColorWithColor(context, self.lineColor.CGColor);
+    CGContextSetLineWidth(context, self.lineWidth);
+    
+    
+    for (int j=0; j<self.dividerNumber; j++) {
+        for (int i=0; i<self.arrayPolygons.count; i++) {
+            CGPoint outPoint = CGPointMake(centerPoint.x - (kCosValue(90 - innerAngle * i) * (radius*(j+1)*(1.0/self.dividerNumber))),centerPoint.y - (kSinValue(90 - innerAngle * i) * (radius*(j+1)*(1.0/self.dividerNumber))));
+            if ((j+1)*(1.0/self.dividerNumber) >= 1) {
+                [self.arrayOuterPoints addObject:[NSValue valueWithCGPoint:outPoint]];
+                CGFloat x = centerPoint.x - (kCosValue(90 - innerAngle * i) * (radius+self.labelSize/2));
+                CGFloat y = centerPoint.y - (kSinValue(90 - innerAngle * i) * (radius+self.labelSize/2));
+                CGPoint textPoint = CGPointMake(x,y);
+                [self.arrayTextPoint addObject:[NSValue valueWithCGPoint:textPoint]];
+            }
+            if (i==0) {
+                CGContextMoveToPoint(context, outPoint.x, outPoint.y);
+            } else {
+                CGContextAddLineToPoint(context, outPoint.x, outPoint.y);
+            }
+            
+        }
+        
+        CGContextClosePath(context);
+        //根据坐标绘制路径
+        CGContextDrawPath(context, kCGPathStroke);
+    }
+    
+    // 渲染
+    //    CGContextStrokePath(context);
+    
+    
+    //   标识文字
+    UIFont *font = [UIFont boldSystemFontOfSize:12.8];
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
+    for (int i=0; i<self.arrayTextPoint.count; i++) {
+        CGPoint pt = [self.arrayTextPoint[i] CGPointValue];
+        CGRect rect = CGRectMake(pt.x-self.labelSize*2 - 20, pt.y-self.labelSize/2, self.labelSize, self.labelSize);
+        NSString* str1 = @"空";
+        if (i<self.arrayLabels.count) {
+            str1 = self.arrayLabels[i];
+        }
+        //获得size
+        CGSize strSize = [str1 sizeWithAttributes:attributes];
+        CGFloat marginTop = (rect.size.height - strSize.height)/2;
+        //垂直居中要自己计算
+        CGRect r = CGRectMake(rect.origin.x, rect.origin.y + marginTop,100, strSize.height);
+        [str1 drawInRect:r withAttributes:attributes];
+    }
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint touchPoint = [[touches anyObject] locationInView:self];
+    //[self showValueWithTouchPoint:touchPoint];
+    for (int i=0; i<self.arrayInnerPoints.count; i++) {
+        CGPoint point = [self.arrayInnerPoints[i] CGPointValue];
+        if (fabs(touchPoint.x - point.x) < 10 && fabs(touchPoint.y - point.y) < 10) {
+            if ([_delegate respondsToSelector:@selector(polygonView:onTouchPoint:indexOfPolygon:)]) {
+                [_delegate polygonView:self onTouchPoint:point indexOfPolygon:i];
+            }
+            break;
+        }
+    }
+}
+
+- (NSArray *)arrayWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    if (error) {
+        NSLog(@"json解析失败：%@",error.localizedDescription);
+        return nil;
+    }
+    return array;
+}
+
+@end

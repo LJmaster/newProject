@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HSHeavenlyBodyCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yWh-rQ-9dX">
+                        <rect key="frame" x="74" y="74" width="227" height="227"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="yWh-rQ-9dX" secondAttribute="height" multiplier="1:1" id="sRU-1i-AKA"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_planet_shallow" translatesAutoresizingMaskIntoConstraints="NO" id="ppg-2x-0yf">
+                        <rect key="frame" x="15" y="15" width="345" height="345"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ppg-2x-0yf" secondAttribute="height" multiplier="1:1" id="HOX-aW-Kqd"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-IJ-hHh">
+                        <rect key="frame" x="50" y="50" width="275" height="275"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="H0z-IJ-hHh" secondAttribute="height" multiplier="1:1" id="tSO-Zj-89m"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ3-0S-Paj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="IJ3-0S-Paj" secondAttribute="height" multiplier="1:1" id="qtC-i3-FZb"/>
+                        </constraints>
+                        <state key="normal" image="star_01" backgroundImage="planet_01new"/>
+                        <connections>
+                            <action selector="heavenlyClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="6kk-yu-m7X"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ppg-2x-0yf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="HiS-QK-2lC"/>
+                <constraint firstItem="yWh-rQ-9dX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="74" id="Iv7-v1-G7k"/>
+                <constraint firstItem="yWh-rQ-9dX" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="R1i-Xj-mkF"/>
+                <constraint firstItem="H0z-IJ-hHh" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Wfa-6U-ew6"/>
+                <constraint firstItem="ppg-2x-0yf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="YQs-PY-q9Z"/>
+                <constraint firstItem="H0z-IJ-hHh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="fH8-VP-loC"/>
+                <constraint firstItem="ppg-2x-0yf" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="hCW-yW-KJh"/>
+                <constraint firstItem="IJ3-0S-Paj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="keq-I7-fQu"/>
+                <constraint firstItem="H0z-IJ-hHh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="nfW-OM-YYp"/>
+                <constraint firstItem="IJ3-0S-Paj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="q5I-JP-Ic6"/>
+                <constraint firstItem="IJ3-0S-Paj" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ryL-qV-2T7"/>
+                <constraint firstItem="yWh-rQ-9dX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="x3O-IA-LKE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="heavenlyClick" destination="IJ3-0S-Paj" id="eIu-n4-7xn"/>
+                <outlet property="heavenlyClickSizeImgView" destination="yWh-rQ-9dX" id="3cA-YD-cmR"/>
+            </connections>
+            <point key="canvasLocation" x="-385" y="156"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="bg_planet_shallow" width="734" height="734"/>
+        <image name="planet_01new" width="704" height="704"/>
+        <image name="star_01" width="750" height="750"/>
+    </resources>
+</document>
