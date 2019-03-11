@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *horoscope; // 星座
 @property (nonatomic, assign) int       horoscopeInt; // 星座的位置
 @property (nonatomic, assign) BOOL      marry; // 结婚
-@property (nonatomic, assign) UIImage  * avatar; // 头像
+@property (nonatomic, strong) UIImage  * avatar; // 头像
 
 //- (NSDictionary *)dicValue;
 

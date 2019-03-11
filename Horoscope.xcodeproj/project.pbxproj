@@ -210,6 +210,7 @@
 		565D032A21E837F300B09E7F /* UIView+size.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D032821E837F200B09E7F /* UIView+size.m */; };
 		565D032D21E8394500B09E7F /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D032C21E8394500B09E7F /* BaseView.m */; };
 		565D033021E8398000B09E7F /* UIButton+ImageTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D032F21E8398000B09E7F /* UIButton+ImageTitle.m */; };
+		567398EC2236823D00C7F421 /* NSObject+Hmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567398EB2236823D00C7F421 /* NSObject+Hmodel.m */; };
 		567D32FB2223932E00955DD4 /* DateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D32FA2223932E00955DD4 /* DateTimePickerView.m */; };
 		567D32FE2223C5A600955DD4 /* HEmoteViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D32FD2223C5A600955DD4 /* HEmoteViewModel.m */; };
 		567D33012223EE2B00955DD4 /* HEmoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D33002223EE2B00955DD4 /* HEmoteModel.m */; };
@@ -550,6 +551,8 @@
 		565D032C21E8394500B09E7F /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		565D032E21E8398000B09E7F /* UIButton+ImageTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitle.h"; sourceTree = "<group>"; };
 		565D032F21E8398000B09E7F /* UIButton+ImageTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitle.m"; sourceTree = "<group>"; };
+		567398EA2236823D00C7F421 /* NSObject+Hmodel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Hmodel.h"; sourceTree = "<group>"; };
+		567398EB2236823D00C7F421 /* NSObject+Hmodel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Hmodel.m"; sourceTree = "<group>"; };
 		567D32F92223932D00955DD4 /* DateTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerView.h; sourceTree = "<group>"; };
 		567D32FA2223932E00955DD4 /* DateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerView.m; sourceTree = "<group>"; };
 		567D32FC2223C5A600955DD4 /* HEmoteViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HEmoteViewModel.h; sourceTree = "<group>"; };
@@ -1075,6 +1078,8 @@
 				567D33042223F33800955DD4 /* UIColor+HColor.m */,
 				567D33062223F4BF00955DD4 /* UIImage+Himage.h */,
 				567D33072223F4BF00955DD4 /* UIImage+Himage.m */,
+				567398EA2236823D00C7F421 /* NSObject+Hmodel.h */,
+				567398EB2236823D00C7F421 /* NSObject+Hmodel.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2062,6 +2067,7 @@
 				567D33052223F33800955DD4 /* UIColor+HColor.m in Sources */,
 				56A8119E2216922300C3545C /* XHStarRateView.m in Sources */,
 				56A3D9592200459C00ECB617 /* HUser.m in Sources */,
+				567398EC2236823D00C7F421 /* NSObject+Hmodel.m in Sources */,
 				56AC0E2321E75EA000E9E401 /* HSelectHoroscopeViewController.m in Sources */,
 				5604113A21FEE48D003A8CA8 /* UIControl+Analysis.m in Sources */,
 				56D17FFC221C11B00006C835 /* TAAnimatedDotView.m in Sources */,

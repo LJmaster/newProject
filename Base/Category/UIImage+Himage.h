@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Himage)
 
+@property(nonnull,strong)NSString * imageName;
+
 -(UIImage *)imageWithBgColor:(UIColor *)color;
 
 @end
