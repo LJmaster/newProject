@@ -18,6 +18,7 @@
 		5604114721FEE4A2003A8CA8 /* AnalysisDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604114121FEE4A2003A8CA8 /* AnalysisDataCache.m */; };
 		5604114821FEE4A2003A8CA8 /* AnalysisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604114221FEE4A2003A8CA8 /* AnalysisModel.m */; };
 		5604114921FEE4A2003A8CA8 /* AnalysisDataUpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5604114321FEE4A2003A8CA8 /* AnalysisDataUpLoader.m */; };
+		56188DB922374CC900A6B23B /* UIFont+Adapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 56188DB822374CC900A6B23B /* UIFont+Adapt.m */; };
 		5618A8D4221687D400F270A8 /* HNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5618A8D3221687D400F270A8 /* HNewsDetailViewController.m */; };
 		561AF385221CFAE800F9CE46 /* HNewslistUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AF384221CFAE800F9CE46 /* HNewslistUITest.m */; };
 		561AF3AD221D76CB00F9CE46 /* AnimationLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 561AF3AC221D76CB00F9CE46 /* AnimationLabel.m */; };
@@ -349,6 +350,8 @@
 		5604114321FEE4A2003A8CA8 /* AnalysisDataUpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisDataUpLoader.m; sourceTree = "<group>"; };
 		5604114421FEE4A2003A8CA8 /* AnalysisDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisDataCache.h; sourceTree = "<group>"; };
 		5604114521FEE4A2003A8CA8 /* AnalysisDataUpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisDataUpLoader.h; sourceTree = "<group>"; };
+		56188DB722374CC900A6B23B /* UIFont+Adapt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Adapt.h"; sourceTree = "<group>"; };
+		56188DB822374CC900A6B23B /* UIFont+Adapt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Adapt.m"; sourceTree = "<group>"; };
 		5618A8D2221687D400F270A8 /* HNewsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HNewsDetailViewController.h; sourceTree = "<group>"; };
 		5618A8D3221687D400F270A8 /* HNewsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNewsDetailViewController.m; sourceTree = "<group>"; };
 		561AF384221CFAE800F9CE46 /* HNewslistUITest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HNewslistUITest.m; sourceTree = "<group>"; };
@@ -1080,6 +1083,8 @@
 				567D33072223F4BF00955DD4 /* UIImage+Himage.m */,
 				567398EA2236823D00C7F421 /* NSObject+Hmodel.h */,
 				567398EB2236823D00C7F421 /* NSObject+Hmodel.m */,
+				56188DB722374CC900A6B23B /* UIFont+Adapt.h */,
+				56188DB822374CC900A6B23B /* UIFont+Adapt.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2055,6 +2060,7 @@
 				56A8119622168EEA00C3545C /* HGeneralTextViewCell.m in Sources */,
 				56AC0E1421E75E6F00E9E401 /* HSTopCompassFlowLayout.m in Sources */,
 				56AC0DFC21E75D8700E9E401 /* RootNavigationController.m in Sources */,
+				56188DB922374CC900A6B23B /* UIFont+Adapt.m in Sources */,
 				56AC0DFA21E75D8700E9E401 /* main.m in Sources */,
 				56AC0E0221E75D8700E9E401 /* AppDelegate+Service.m in Sources */,
 				561D078F221A5E73008026FD /* HFacePieceViewController.m in Sources */,

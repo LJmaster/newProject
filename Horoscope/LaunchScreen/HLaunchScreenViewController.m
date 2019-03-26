@@ -29,6 +29,7 @@
     self.iconNameLab.textAlignment = NSTextAlignmentCenter;
     
     
+    
     [self downAnimation];
     // Do any additional setup after loading the view.
 }

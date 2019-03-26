@@ -5,6 +5,7 @@
 //  Created by 刘杰 on 2019/1/29.
 //  Copyright © 2019 makerLJ. All rights reserved.
 //  利用runtime  实例化数据
+//  https://www.jianshu.com/p/fe131f8757ba
 
 #import "HUser.h"
 
@@ -65,6 +66,52 @@
     return self;
 }
 
+
+//获取属性列表
+-(void)getallProperty{
+    unsigned int count;
+    objc_property_t * propertyList = class_copyPropertyList([self class], &count);
+    
+    for (int i = 0; i < count; i++) {
+        const char * propertyName = property_getName(propertyList[i]);
+         NSLog(@"PropertyName(%d): %@",i,[NSString stringWithUTF8String:propertyName]);
+    }
+    free(propertyList);
+    
+}
+//获取所有成员变量
+-(void)getallIvar{
+    unsigned int count;
+    Ivar *ivarList = class_copyIvarList([self class], &count);
+    for (int i= 0; i<count; i++) {
+        Ivar ivar = ivarList[i];
+        const char *ivarName = ivar_getName(ivar);
+        NSLog(@"Ivar(%d): %@", i, [NSString stringWithUTF8String:ivarName]);
+    }
+    free(ivarList);
+}
+//获取所有方法
+-(void)getallMethod{
+    unsigned int count;
+    Method *methodList = class_copyMethodList([self class], &count);
+    for (unsigned int i = 0; i<count; i++) {
+        Method method = methodList[i];
+        SEL mthodName = method_getName(method);
+        NSLog(@"MethodName(%d): %@",i,NSStringFromSelector(mthodName));
+    }
+    free(methodList);
+}
+//获取当前遵循的所有协议
+-(void)getallProtocol{
+//    unsigned int count;
+//    __unsafe_unretained Protocol **protocolList = class_copyProtocolList([self class], &count);
+//    for (int i=0; i< count; i++) {
+//        Protocol *protocal = protocolList[i];
+//        const char *protocolName = protocol_getName(protocal);
+//        NSLog(@"protocol(%d): %@",i, [NSString stringWithUTF8String:protocolName]);
+//    }
+//    free(propertyList);
+}
 
 @end
 //brew install ios-deploy
