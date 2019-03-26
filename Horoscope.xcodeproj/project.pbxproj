@@ -207,6 +207,8 @@
 		561D08FF221A7CC9008026FD /* manmouth7.png in Resources */ = {isa = PBXBuildFile; fileRef = 561D084A221A7CC8008026FD /* manmouth7.png */; };
 		561EEC7E221540BC0014BDB8 /* HHoroscopeMatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561EEC7D221540BC0014BDB8 /* HHoroscopeMatchView.m */; };
 		561EECAB221589570014BDB8 /* ZLPolygonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 561EECAA221589570014BDB8 /* ZLPolygonView.m */; };
+		563C61C3224A18C6000D076E /* Aobject.m in Sources */ = {isa = PBXBuildFile; fileRef = 563C61C2224A18C6000D076E /* Aobject.m */; };
+		563C61C6224A18D3000D076E /* Bobject.m in Sources */ = {isa = PBXBuildFile; fileRef = 563C61C5224A18D3000D076E /* Bobject.m */; };
 		565D032721E837DA00B09E7F /* SSShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D032621E837DA00B09E7F /* SSShadowView.m */; };
 		565D032A21E837F300B09E7F /* UIView+size.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D032821E837F200B09E7F /* UIView+size.m */; };
 		565D032D21E8394500B09E7F /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565D032C21E8394500B09E7F /* BaseView.m */; };
@@ -546,6 +548,10 @@
 		561EEC7D221540BC0014BDB8 /* HHoroscopeMatchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHoroscopeMatchView.m; sourceTree = "<group>"; };
 		561EECA9221589570014BDB8 /* ZLPolygonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLPolygonView.h; sourceTree = "<group>"; };
 		561EECAA221589570014BDB8 /* ZLPolygonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLPolygonView.m; sourceTree = "<group>"; };
+		563C61C1224A18C6000D076E /* Aobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Aobject.h; sourceTree = "<group>"; };
+		563C61C2224A18C6000D076E /* Aobject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Aobject.m; sourceTree = "<group>"; };
+		563C61C4224A18D3000D076E /* Bobject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bobject.h; sourceTree = "<group>"; };
+		563C61C5224A18D3000D076E /* Bobject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bobject.m; sourceTree = "<group>"; };
 		565D032521E837DA00B09E7F /* SSShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShadowView.h; sourceTree = "<group>"; };
 		565D032621E837DA00B09E7F /* SSShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShadowView.m; sourceTree = "<group>"; };
 		565D032821E837F200B09E7F /* UIView+size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+size.m"; sourceTree = "<group>"; };
@@ -1213,6 +1219,10 @@
 			children = (
 				56881869221E89E800828757 /* HLaunchScreenViewController.h */,
 				5688186A221E89E800828757 /* HLaunchScreenViewController.m */,
+				563C61C1224A18C6000D076E /* Aobject.h */,
+				563C61C2224A18C6000D076E /* Aobject.m */,
+				563C61C4224A18D3000D076E /* Bobject.h */,
+				563C61C5224A18D3000D076E /* Bobject.m */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -2019,6 +2029,7 @@
 				567D32FE2223C5A600955DD4 /* HEmoteViewModel.m in Sources */,
 				5604114821FEE4A2003A8CA8 /* AnalysisModel.m in Sources */,
 				5604114621FEE4A2003A8CA8 /* AnalysisDataManager.m in Sources */,
+				563C61C3224A18C6000D076E /* Aobject.m in Sources */,
 				56DBE59A221F94790086BCC3 /* HCardView.m in Sources */,
 				568765B4221294B800110452 /* HNameNavView.m in Sources */,
 				56AC0E1621E75E6F00E9E401 /* HSTopCompassDataModel.m in Sources */,
@@ -2069,6 +2080,7 @@
 				56DB9D0522140BDA0000B2DE /* HHeaderCell.m in Sources */,
 				56AC0DC721E715CB00E9E401 /* AISnowView.m in Sources */,
 				5604113821FEE48D003A8CA8 /* UIGestureRecognizer+Analysis.m in Sources */,
+				563C61C6224A18D3000D076E /* Bobject.m in Sources */,
 				565D033021E8398000B09E7F /* UIButton+ImageTitle.m in Sources */,
 				567D33052223F33800955DD4 /* UIColor+HColor.m in Sources */,
 				56A8119E2216922300C3545C /* XHStarRateView.m in Sources */,
