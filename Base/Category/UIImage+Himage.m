@@ -36,4 +36,15 @@
     
 }
 
+-(UIImage *)reSizeImage:(CGSize)reSize{
+    
+    UIGraphicsBeginImageContextWithOptions(reSize, NO, UIScreen.mainScreen.scale);
+    [self drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage * reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return reSizeImage;
+    
+}
+
+
 @end

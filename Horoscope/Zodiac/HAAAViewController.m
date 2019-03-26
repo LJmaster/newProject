@@ -17,7 +17,7 @@
 #import "HSelectHoroscopeViewController.h"
 #import "HEmoteViewController.h"
 
-@interface HAAAViewController ()<SGPageTitleViewDelegate, SGPageContentCollectionViewDelegate,UITableViewDelegate,UITableViewDataSource,PersonalCenterChildBaseVCDelegate>
+@interface HAAAViewController ()<SGPageTitleViewDelegate, SGPageContentCollectionViewDelegate,UITableViewDelegate,UITableViewDataSource,PersonalCenterChildBaseVCDelegate,UIScrollViewDelegate>
 
 @property (nonatomic,strong) HNameNavView  * navView;
 
@@ -33,9 +33,15 @@
 
 @implementation HAAAViewController
 
-static CGFloat const PersonalCenterVCPageTitleViewHeight = 40;
-#define PersonalCenterVCTopViewHeight 215
-#define PersonalCenterVCNavHeight kstatusBarH + 74
+
+#define PersonalCenterVCNavHeight kstatusBarH + 50
+static CGFloat const PersonalCenterVCPageTitleViewHeight = 44;
+static CGFloat const PersonalCenterVCTopViewHeight = 215;
+
+
+//static CGFloat const PersonalCenterVCPageTitleViewHeight = 40;
+//#define PersonalCenterVCTopViewHeight 215
+//#define PersonalCenterVCNavHeight kstatusBarH + 74
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -79,6 +85,20 @@ static CGFloat const PersonalCenterVCPageTitleViewHeight = 40;
 }
 
 - (void)foundTableView {
+    CGFloat tableViewX = 0;
+    CGFloat tableViewY = PersonalCenterVCNavHeight;
+    CGFloat tableViewW = self.view.frame.size.width;
+    CGFloat tableViewH = KScreenHeight - PersonalCenterVCNavHeight - kBottomSafeHeight - kTabBarHeight;
+    self.ptableView = [[PersonalCenterTableView alloc] initWithFrame:CGRectMake(tableViewX, tableViewY, tableViewW, tableViewH) style:(UITableViewStylePlain)];
+    _ptableView.delegate = self;
+    _ptableView.dataSource = self;
+    [_ptableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    _ptableView.backgroundColor = [UIColor clearColor];
+    _ptableView.tableHeaderView = self.topView;
+    _ptableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _ptableView.sectionHeaderHeight = PersonalCenterVCPageTitleViewHeight;
+    _ptableView.rowHeight = self.view.frame.size.height - PersonalCenterVCPageTitleViewHeight;
+    _ptableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.ptableView];
 }
 
@@ -92,7 +112,6 @@ static CGFloat const PersonalCenterVCPageTitleViewHeight = 40;
         self.ptableView.contentOffset = CGPointMake(0, PersonalCenterVCTopViewHeight);
     }
     CGFloat offSetY = scrollView.contentOffset.y;
-//    NSLog(@" yy == %f",offSetY);
     if (offSetY < PersonalCenterVCTopViewHeight) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"pageTitleViewToTop" object:nil];
     }
@@ -151,25 +170,7 @@ static CGFloat const PersonalCenterVCPageTitleViewHeight = 40;
 
 #pragma mark
 #pragma mark - - - gettting
--(PersonalCenterTableView *)ptableView{
-    if (_ptableView == nil) {
-        CGFloat tableViewX = 0;
-        CGFloat tableViewY = PersonalCenterVCNavHeight;
-        CGFloat tableViewW = self.view.frame.size.width;
-        CGFloat tableViewH = self.view.frame.size.height - PersonalCenterVCNavHeight - kTabBarHeight - kBottomSafeHeight;
-        self.ptableView = [[PersonalCenterTableView alloc] initWithFrame:CGRectMake(tableViewX, tableViewY, tableViewW, tableViewH) style:(UITableViewStylePlain)];
-        _ptableView.delegate = self;
-        _ptableView.dataSource = self;
-        [_ptableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-        _ptableView.backgroundColor = [UIColor clearColor];
-        _ptableView.tableHeaderView = self.topView;
-        _ptableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        _ptableView.sectionHeaderHeight = PersonalCenterVCPageTitleViewHeight;
-        _ptableView.rowHeight = self.view.frame.size.height - PersonalCenterVCPageTitleViewHeight;
-        _ptableView.showsVerticalScrollIndicator = NO;
-    }
-    return _ptableView;
-}
+
 
 - (UIView *)topView {
     if (!_topView) {

@@ -205,14 +205,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)ActivityShareImage:(UIImage *)shareImage{
+    //分享的标题
+    NSString *textToShare = @"Horoscope";
+    //分享的图片
+    //    UIImage *imageToShare = shareImage;
+    //分享的url
+    //    NSURL *urlToShare = [NSURL URLWithString:@"http://www.baidu.com"];
+    //在这里呢 如果想分享图片 就把图片添加进去  文字什么的通上
+    NSArray *activityItems = @[textToShare,shareImage];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    //不出现在活动项目
+    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
+    [self presentViewController:activityVC animated:YES completion:nil];
+    // 分享之后的回调
+    activityVC.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        if (completed) {
+            NSLog(@"completed");
+            //分享 成功
+        } else  {
+            NSLog(@"cancled");
+            //分享 取消
+        }
+    };
+    
 }
-*/
 
 @end
