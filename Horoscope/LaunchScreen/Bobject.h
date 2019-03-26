@@ -14,7 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSMutableString * testString;
 
+@property (nonatomic,copy) NSMutableString * testStringcopy;
 
+@property (nonatomic,copy) NSMutableString * testStringMuCopy;
+
+@property (nonatomic,copy) NSMutableString * testStringMutableCopy;
 @end
 
 NS_ASSUME_NONNULL_END
